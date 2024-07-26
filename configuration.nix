@@ -43,18 +43,12 @@
 
   # systemPackages
   environment.systemPackages = with pkgs; [
-    vim
+    helix
     curl
     wget
-    nano
     bind
-    kubectl
-    kubernetes-helm
     iptables
-    openvpn
     python3
-    nodejs
-    docker-compose
   ];
 
   services.openssh = {
@@ -64,16 +58,16 @@
 
   # Some sample service.
   # Use dnsmasq as internal LAN DNS resolver.
-  services.dnsmasq = {
-    enable = false;
-    settings.servers = [ "8.8.8.8" "8.8.4.4" "1.1.1.1" ];
-    settings.extraConfig = ''
-      address=/fenrir.test/192.168.100.6
-      address=/recalune.test/192.168.100.7
-      address=/eth.nixpi.test/192.168.100.3
-      address=/wlan.nixpi.test/192.168.100.4
-    '';
-  };
+  # services.dnsmasq = {
+  #   enable = false;
+  #   settings.servers = [ "8.8.8.8" "8.8.4.4" "1.1.1.1" ];
+  #   settings.extraConfig = ''
+  #     address=/fenrir.test/192.168.100.6
+  #     address=/recalune.test/192.168.100.7
+  #     address=/eth.nixpi.test/192.168.100.3
+  #     address=/wlan.nixpi.test/192.168.100.4
+  #   '';
+  # };
 
   # services.openvpn = {
   #     # You can set openvpn connection
@@ -93,7 +87,7 @@
   };
 
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   networking.firewall.enable = false;
 
@@ -164,8 +158,8 @@
     };
   };
   users.users.root.openssh.authorizedKeys.keys = [
-    # This is my public key
-    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqlXJv/noNPmZMIfjJguRX3O+Z39xeoKhjoIBEyfeqgKGh9JOv7IDBWlNnd3rHVnVPzB9emiiEoAJpkJUnWNBidL6vPYn13r6Zrt/2WLT6TiUFU026ANdqMjIMEZrmlTsfzFT+OzpBqtByYOGGe19qD3x/29nbszPODVF2giwbZNIMo2x7Ww96U4agb2aSAwo/oQa4jQsnOpYRMyJQqCUhvX8LzvE9vFquLlrSyd8khUsEVV/CytmdKwUUSqmlo/Mn7ge/S12rqMwmLvWFMd08Rg9NHvRCeOjgKB4EI6bVwF8D6tNFnbsGVzTHl7Cosnn75U11CXfQ6+8MPq3cekYr lucernae@lombardia-N43SM"
+   # This is my public key
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOXblym20SD75es2z5Qay0mfW+g2zvKPBVMsUFakIyBK diegobarrosaraya@outlook.com"
   ];
   system.stateVersion = "23.05";
 }
